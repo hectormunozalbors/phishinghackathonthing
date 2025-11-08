@@ -18,7 +18,7 @@ def load_model():
     model.set_params(params)
 
 @app.post("/predict_phishing/")
-def predict_phishing(text, vectorizer, model):
+def predict_phishing(text, vectorizer):
     # Preprocess the input text
     text = text.lower()  
     # Vectorize 
