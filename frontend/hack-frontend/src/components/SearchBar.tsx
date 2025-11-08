@@ -15,7 +15,7 @@ const SearchBar: React.FC<Props> = ({email,setEmail}) => {
         setValue(e.target.value);
     }
     return (
-        <div>
+        <div className='search-obj'>
             {/* 💡 CHANGE 1: Change the tag from <input> to <textarea> */}
             <textarea 
             placeholder='Enter Email...'
@@ -23,6 +23,7 @@ const SearchBar: React.FC<Props> = ({email,setEmail}) => {
             onChange={handleValueChange}
             rows={16} 
             cols={80} 
+            className='textArea'
             />
             <button onClick={handleClick}>
                 Submit

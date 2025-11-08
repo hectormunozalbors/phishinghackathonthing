@@ -1,4 +1,9 @@
 .searchBox{
+    display: flexbox;
+    flex-direction:row;
     height: 300px;
     width: 500px;
+}
+.textArea{
+    font-size: 20px
 }
