@@ -4,7 +4,7 @@ import { Prediction } from "./components/Prediction";
 import { Confidence } from "./components/Confidence";
 
 function App() {
-  const [prediction,setPrediction] = useState(0);
+  const [prediction,setPrediction] = useState("");
   const [probability,setProbability] = useState(0);
   
   const [email,setEmail] = useState("");
@@ -25,7 +25,9 @@ function App() {
     .then((vals) =>{
       console.log(vals);
       if(vals != undefined){
-        setPrediction(vals["prediction"])
+        const num = vals["prediction"];
+        if(num === 0){setPrediction("Normal Email")}
+        else{setPrediction("Phishing Email")};
         setProbability(vals["confidence"]);
       }
     })

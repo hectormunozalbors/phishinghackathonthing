@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface Props{
-    prediction : number
+    prediction : string
 }
 
 export const Prediction: React.FC<Props> = ({prediction}) => {
