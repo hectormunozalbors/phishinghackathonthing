@@ -19,9 +19,7 @@ app.add_middleware(
 )
 
 params_file = open('model', 'rb')
-params = pickle.load(params_file)
-model = LogisticRegression()
-model.set_params(**params)
+model = pickle.load(params_file)
 
 vectorizer = TfidfVectorizer(stop_words='english', max_features=5000)
 @app.post("/predict_phishing/")
