@@ -60,23 +60,5 @@ def main():
         accuracies.append(accuracy)
         print(f"Training with {subset_size} samples ({i * 10}% of data)... Test Accuracy: {accuracy:.3f}")
 
-    # --- Test the prediction function ---
-    test_emails = [
-        "URGENT: Your account has been suspended. Click here to verify.",
-        "Hi team, please find the attached report for our quarterly review.",
-        "Congratulations! You've won a prize. Please provide your details to claim $1,000,000."
-    ]
-
-    # Final evaluation with the model trained on all data
-    print("\n--- Final Model Evaluation ---")
-    print(f"Final Model Accuracy: {accuracies[-1]:.2f}")
-    print("\nClassification Report:")
-    print(classification_report(y_test, y_pred))
-    print("\n--- Testing with sample emails ---")
-    for email in test_emails:
-        prediction, probability = predict_phishing(email, vectorizer, model)
-        result = "Phishing" if prediction == 1 else "Safe Email"
-        print(f"Email: '{email[:50]}...' -> Prediction: {result} (Confidence: {probability*100:.2f}%)")
-
 if __name__ == "__main__":
     main()
