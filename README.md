@@ -1,4 +1,4 @@
-# phishinghackathonthing
+# Instructions to boot up webapp
 create venv with requirements pip install -r requirements.txt
 with uvicorn, uvicorn predict:app --reload
 cd frontend/hack-frontend
