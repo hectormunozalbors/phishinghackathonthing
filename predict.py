@@ -7,7 +7,8 @@ from  fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 class EmailInput(BaseModel):
-    data: dict
+    text: str
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -25,12 +26,13 @@ def load_model():
     model = LogisticRegression()
     model.set_params(params)
 
+vectorizer = TfidfVectorizer(stop_words='english', max_features=5000)
 @app.post("/predict_phishing/")
 def predict_phishing(data: EmailInput):
     # Preprocess the input text
     data.text = data.text.lower()  
     # Vectorize 
-    vectorizer = TfidfVectorizer(stop_words='english', max_features=5000)
+    
     text_vec = vectorizer.fit_transform([data.text]) 
     # Predict
     prediction = model.predict(text_vec)[0]
